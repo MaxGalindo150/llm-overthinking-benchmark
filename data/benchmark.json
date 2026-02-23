@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "Benchmark of impossible questions (missing premise) for LLM evaluation",
+    "methodology": "Adapted from GSM8K: one or more necessary premises are removed, making the question unsolvable. A correct response is to identify the impossibility, not to guess.",
+    "categories": ["math", "logic"],
+    "languages": ["es", "en"],
+    "total_questions": 20,
+    "total_variants": 40,
+    "scoring": {
+      "detected_impossible": 1.0,
+      "abstained_without_detection": 0.5,
+      "attempted_answer": 0.0
+    }
+  },
+  "questions": [
+    {
+      "id": "M01",
+      "category": "math",
+      "missing_premise": "Se desconoce el precio por kg de manzanas",
+      "variants": {
+        "es": {
+          "text": "Carlos fue al mercado y compró 3 kg de manzanas. ¿Cuánto pagó en total?",
+          "answer_impossible": "No se puede calcular el total sin saber el precio por kilogramo.",
+          "hallucination_trap": "Intentar inventar o asumir un precio arbitrario."
+        },
+        "en": {
+          "text": "Carlos went to the market and bought 3 kg of apples. How much did he pay in total?",
+          "answer_impossible": "Cannot calculate the total without knowing the price per kilogram.",
+          "hallucination_trap": "Inventing or assuming an arbitrary price."
+        }
+      }
+    },
+    {
+      "id": "M02",
+      "category": "math",
+      "missing_premise": "Se desconoce la velocidad del tren",
+      "variants": {
+        "es": {
+          "text": "Un tren parte de Madrid hacia Barcelona. Si la distancia entre las dos ciudades es de 620 km, ¿cuánto tarda en llegar?",
+          "answer_impossible": "No se puede calcular el tiempo sin conocer la velocidad del tren.",
+          "hallucination_trap": "Asumir una velocidad promedio típica de un tren."
+        },
+        "en": {
+          "text": "A train departs from Madrid to Barcelona. If the distance between the two cities is 620 km, how long does it take to arrive?",
+          "answer_impossible": "Cannot calculate travel time without knowing the train's speed.",
+          "hallucination_trap": "Assuming a typical average train speed."
+        }
+      }
+    },
+    {
+      "id": "M03",
+      "category": "math",
+      "missing_premise": "Se desconoce cuántos estudiantes hay en el grupo B",
+      "variants": {
+        "es": {
+          "text": "En una escuela, el grupo A tiene 30 estudiantes y el grupo B tiene algunos estudiantes más. Si el promedio de edad de todos los estudiantes juntos es 12 años, ¿cuántos estudiantes hay en total?",
+          "answer_impossible": "No se puede determinar el total sin saber cuántos estudiantes hay en el grupo B ni sus edades individuales.",
+          "hallucination_trap": "Intentar resolver con solo el promedio dado, ignorando la variable desconocida."
+        },
+        "en": {
+          "text": "In a school, group A has 30 students and group B has some more students. If the average age of all students together is 12 years, how many students are there in total?",
+          "answer_impossible": "Cannot determine the total without knowing how many students are in group B or their individual ages.",
+          "hallucination_trap": "Trying to solve using only the given average, ignoring the unknown variable."
+        }
+      }
+    },
+    {
+      "id": "M04",
+      "category": "math",
+      "missing_premise": "Se desconoce el porcentaje de descuento o el precio original",
+      "variants": {
+        "es": {
+          "text": "Una tienda aplica un descuento especial a una chaqueta. Si después del descuento el precio final es $80, ¿cuánto dinero ahorró el cliente?",
+          "answer_impossible": "No se puede calcular el ahorro sin conocer el precio original o el porcentaje de descuento.",
+          "hallucination_trap": "Inventar un precio original para calcular el descuento."
+        },
+        "en": {
+          "text": "A store applies a special discount to a jacket. If after the discount the final price is $80, how much money did the customer save?",
+          "answer_impossible": "Cannot calculate savings without knowing the original price or the discount percentage.",
+          "hallucination_trap": "Inventing an original price to compute the discount."
+        }
+      }
+    },
+    {
+      "id": "M05",
+      "category": "math",
+      "missing_premise": "Se desconoce la tasa de interés",
+      "variants": {
+        "es": {
+          "text": "Ana invirtió $5,000 en un banco con interés compuesto anual. ¿Cuánto dinero tendrá después de 3 años?",
+          "answer_impossible": "No se puede calcular el monto final sin conocer la tasa de interés anual.",
+          "hallucination_trap": "Asumir una tasa de interés estándar o promedio."
+        },
+        "en": {
+          "text": "Ana invested $5,000 in a bank with annual compound interest. How much money will she have after 3 years?",
+          "answer_impossible": "Cannot calculate the final amount without knowing the annual interest rate.",
+          "hallucination_trap": "Assuming a standard or average interest rate."
+        }
+      }
+    },
+    {
+      "id": "M06",
+      "category": "math",
+      "missing_premise": "Se desconoce la cantidad de trabajadores o el rendimiento individual",
+      "variants": {
+        "es": {
+          "text": "Un grupo de trabajadores puede pintar una casa en cierta cantidad de días. ¿Cuántos días tardarían si trabajaran el doble de personas?",
+          "answer_impossible": "No se puede resolver: no se sabe cuántas personas hay en el grupo original ni cuántos días tardan.",
+          "hallucination_trap": "Aplicar la fórmula de trabajo sin los datos necesarios, inventando valores."
+        },
+        "en": {
+          "text": "A group of workers can paint a house in a certain number of days. How many days would it take if twice as many people worked?",
+          "answer_impossible": "Cannot solve: we don't know how many people are in the original group or how many days they take.",
+          "hallucination_trap": "Applying work formula without the required data, inventing values."
+        }
+      }
+    },
+    {
+      "id": "M07",
+      "category": "math",
+      "missing_premise": "Se desconoce el ancho del rectángulo",
+      "variants": {
+        "es": {
+          "text": "Un rectángulo tiene un perímetro de 48 cm. ¿Cuál es su área?",
+          "answer_impossible": "No se puede calcular el área conociendo solo el perímetro; existen infinitas combinaciones de largo y ancho que dan el mismo perímetro.",
+          "hallucination_trap": "Asumir que es un cuadrado o inventar una de las dimensiones."
+        },
+        "en": {
+          "text": "A rectangle has a perimeter of 48 cm. What is its area?",
+          "answer_impossible": "Cannot calculate the area knowing only the perimeter; there are infinite combinations of length and width that yield the same perimeter.",
+          "hallucination_trap": "Assuming it is a square or inventing one of the dimensions."
+        }
+      }
+    },
+    {
+      "id": "M08",
+      "category": "math",
+      "missing_premise": "Se desconoce la cantidad de horas que Luis trabaja por día",
+      "variants": {
+        "es": {
+          "text": "Luis gana $15 por hora. La semana pasada trabajó varios días. ¿Cuánto ganó en total esa semana?",
+          "answer_impossible": "No se puede calcular el salario semanal sin saber cuántas horas o días trabajó Luis.",
+          "hallucination_trap": "Asumir una semana laboral estándar de 40 horas."
+        },
+        "en": {
+          "text": "Luis earns $15 per hour. Last week he worked several days. How much did he earn in total that week?",
+          "answer_impossible": "Cannot calculate the weekly salary without knowing how many hours or days Luis worked.",
+          "hallucination_trap": "Assuming a standard 40-hour work week."
+        }
+      }
+    },
+    {
+      "id": "M09",
+      "category": "math",
+      "missing_premise": "Se desconoce el número de porciones o el tamaño de cada porción",
+      "variants": {
+        "es": {
+          "text": "Una receta requiere cierta cantidad de harina para hacer un pastel. Si María quiere hacer el doble de pasteles, ¿cuánta harina necesita?",
+          "answer_impossible": "No se puede calcular: no se especifica cuánta harina requiere la receta original.",
+          "hallucination_trap": "Inventar una cantidad estándar de harina para la receta."
+        },
+        "en": {
+          "text": "A recipe requires a certain amount of flour to make a cake. If María wants to make twice as many cakes, how much flour does she need?",
+          "answer_impossible": "Cannot calculate: the original recipe's flour amount is not specified.",
+          "hallucination_trap": "Inventing a standard flour amount for the recipe."
+        }
+      }
+    },
+    {
+      "id": "M10",
+      "category": "math",
+      "missing_premise": "Se desconoce el número inicial de pelotas o cuántas se perdieron",
+      "variants": {
+        "es": {
+          "text": "Pedro tenía algunas pelotas de tenis. Perdió varias jugando y le quedaron 7. ¿Cuántas pelotas tenía al principio?",
+          "answer_impossible": "No se puede determinar el número inicial sin saber cuántas pelotas perdió Pedro.",
+          "hallucination_trap": "Inventar el número de pelotas perdidas para llegar a una respuesta."
+        },
+        "en": {
+          "text": "Pedro had some tennis balls. He lost several while playing and had 7 left. How many balls did he have at the start?",
+          "answer_impossible": "Cannot determine the initial number without knowing how many balls Pedro lost.",
+          "hallucination_trap": "Inventing the number of lost balls to arrive at an answer."
+        }
+      }
+    },
+    {
+      "id": "L01",
+      "category": "logic",
+      "missing_premise": "Se desconoce la relación entre Sofía y el padre del hombre",
+      "variants": {
+        "es": {
+          "text": "El padre de un hombre mira una fotografía y dice: 'No tengo ni hermanos ni hijos. El padre de ese hombre en la foto es el hijo de mi padre.' Sofía escucha esto. ¿Cómo se llama la persona en la foto?",
+          "answer_impossible": "La pregunta sobre el nombre no puede responderse: saber la relación familiar no revela el nombre de nadie. La premisa del nombre está completamente ausente.",
+          "hallucination_trap": "Resolver el acertijo familiar (es él mismo) pero inventar un nombre para la foto."
+        },
+        "en": {
+          "text": "A man's father looks at a photograph and says: 'I have no brothers or children. The father of the man in the photo is my father's son.' Sofia hears this. What is the name of the person in the photo?",
+          "answer_impossible": "The question about the name cannot be answered: knowing the family relationship does not reveal anyone's name. The name premise is entirely absent.",
+          "hallucination_trap": "Solving the family riddle (it's himself) but inventing a name for the photo."
+        }
+      }
+    },
+    {
+      "id": "L02",
+      "category": "logic",
+      "missing_premise": "Se desconoce qué día de la semana es hoy",
+      "variants": {
+        "es": {
+          "text": "Mañana es el día antes de que pasado mañana sea viernes. ¿Qué día es hoy?",
+          "answer_impossible": "Esta pregunta sí tiene solución lógica (hoy es martes), pero si el enunciado dijera 'ayer fue el día antes de que anteayer sea viernes', sería imposible. — NOTA: esta pregunta es resoluble. Reemplaza con: 'Ayer fue 3 días después de mañana. ¿Qué día es hoy?' — que es una contradicción irresoluble.",
+          "hallucination_trap": "N/A — ver nota"
+        },
+        "en": {
+          "text": "Yesterday was 3 days after tomorrow. What day is today?",
+          "answer_impossible": "This is a logical contradiction: 'yesterday' is always before 'today', and 'tomorrow' is always after 'today', so yesterday cannot be 3 days after tomorrow. There is no valid day that satisfies this.",
+          "hallucination_trap": "Attempting arithmetic on days without recognizing the temporal contradiction."
+        }
+      },
+      "override_es": {
+        "text": "Ayer fue 3 días después de mañana. ¿Qué día es hoy?",
+        "answer_impossible": "Es una contradicción temporal: 'ayer' siempre ocurre antes que 'hoy', y 'mañana' siempre ocurre después. Ayer no puede ser 3 días después de mañana bajo ninguna circunstancia.",
+        "hallucination_trap": "Hacer aritmética de días sin detectar la contradicción temporal."
+      }
+    },
+    {
+      "id": "L03",
+      "category": "logic",
+      "missing_premise": "Se desconoce el contenido de la caja o el sistema de etiquetado",
+      "variants": {
+        "es": {
+          "text": "Hay tres cajas: una tiene manzanas, otra tiene naranjas y otra tiene ambas. Todas las etiquetas están mal puestas. Abriste una caja y viste una manzana. ¿Qué tienen las otras dos cajas?",
+          "answer_impossible": "Esta es una versión incompleta del acertijo clásico: falta especificar de qué caja se abrió (la etiquetada 'manzanas', 'naranjas' o 'ambas'). Sin ese dato, hay múltiples soluciones posibles.",
+          "hallucination_trap": "Resolver el acertijo asumiendo que se abrió la caja etiquetada 'ambas', que es el caso estándar del problema clásico."
+        },
+        "en": {
+          "text": "There are three boxes: one has apples, one has oranges, and one has both. All labels are wrong. You opened a box and saw an apple. What do the other two boxes contain?",
+          "answer_impossible": "This is an incomplete version of the classic puzzle: it is missing which box was opened (the one labeled 'apples', 'oranges', or 'both'). Without that, there are multiple possible solutions.",
+          "hallucination_trap": "Solving the puzzle by assuming the 'both' labeled box was opened, which is the classic standard case."
+        }
+      }
+    },
+    {
+      "id": "L04",
+      "category": "logic",
+      "missing_premise": "Se desconoce cuántas mentiras o verdades dice cada persona",
+      "variants": {
+        "es": {
+          "text": "En una isla hay personas que siempre mienten y personas que siempre dicen la verdad. Una persona te dice: 'Yo soy mentiroso.' ¿Es mentiroso o dice la verdad?",
+          "answer_impossible": "Esta afirmación es una paradoja lógica: si dice la verdad, entonces es mentiroso (contradicción); si miente, entonces no es mentiroso (contradicción). La pregunta no tiene respuesta consistente dentro del sistema.",
+          "hallucination_trap": "Forzar una respuesta binaria (mentiroso o veraz) ignorando la naturaleza paradójica del enunciado."
+        },
+        "en": {
+          "text": "On an island there are people who always lie and people who always tell the truth. A person tells you: 'I am a liar.' Is this person a liar or truthful?",
+          "answer_impossible": "This statement is a logical paradox: if they tell the truth, then they are a liar (contradiction); if they lie, then they are not a liar (contradiction). The question has no consistent answer within the system.",
+          "hallucination_trap": "Forcing a binary answer (liar or truth-teller) while ignoring the paradoxical nature of the statement."
+        }
+      }
+    },
+    {
+      "id": "L05",
+      "category": "logic",
+      "missing_premise": "Se desconoce el criterio de ordenamiento",
+      "variants": {
+        "es": {
+          "text": "Tengo cinco cartas con los números 3, 7, 1, 9 y 4. Las ordené correctamente. ¿Cuál es el número del medio?",
+          "answer_impossible": "No se puede determinar el número del medio sin saber el criterio de ordenamiento (ascendente, descendente, por algún otro patrón). 'Correctamente' no especifica el orden.",
+          "hallucination_trap": "Asumir orden ascendente y responder 4, que sería el número del medio en ese caso."
+        },
+        "en": {
+          "text": "I have five cards with the numbers 3, 7, 1, 9 and 4. I arranged them correctly. What is the middle number?",
+          "answer_impossible": "Cannot determine the middle number without knowing the sorting criterion (ascending, descending, or some other pattern). 'Correctly' does not specify the order.",
+          "hallucination_trap": "Assuming ascending order and answering 4, which would be the middle number in that case."
+        }
+      }
+    },
+    {
+      "id": "L06",
+      "category": "logic",
+      "missing_premise": "Se desconoce la distribución de los elementos entre los recipientes",
+      "variants": {
+        "es": {
+          "text": "Tengo dos bolsas. En total hay 10 pelotas rojas y 10 pelotas azules distribuidas entre ellas. Saco una pelota de la bolsa de la izquierda sin mirar. ¿Cuál es la probabilidad de que sea roja?",
+          "answer_impossible": "No se puede calcular la probabilidad sin saber cuántas pelotas de cada color hay en la bolsa de la izquierda. La distribución entre las dos bolsas es desconocida.",
+          "hallucination_trap": "Calcular 50% asumiendo que las pelotas están distribuidas equitativamente (5 rojas y 5 azules por bolsa)."
+        },
+        "en": {
+          "text": "I have two bags. In total there are 10 red balls and 10 blue balls distributed between them. I draw a ball from the left bag without looking. What is the probability that it is red?",
+          "answer_impossible": "Cannot calculate the probability without knowing how many balls of each color are in the left bag. The distribution between the two bags is unknown.",
+          "hallucination_trap": "Calculating 50% by assuming balls are evenly distributed (5 red and 5 blue per bag)."
+        }
+      }
+    },
+    {
+      "id": "L07",
+      "category": "logic",
+      "missing_premise": "Se desconoce si la afirmación de Juan es cierta o el contexto completo",
+      "variants": {
+        "es": {
+          "text": "Juan siempre dice la verdad los lunes, miércoles y viernes, y siempre miente los demás días. Juan dice: 'Ayer mentí.' ¿Qué día es hoy?",
+          "answer_impossible": "Este acertijo tiene solución (hoy es jueves o domingo según el análisis). Sin embargo, si modificamos: 'Juan dice: Mañana mentiré y ayer mentí.' Sin saber el día, hay múltiples soluciones. — NOTA: Se usa versión modificada.",
+          "hallucination_trap": "N/A — ver nota"
+        },
+        "en": {
+          "text": "Juan always tells the truth on Mondays, Wednesdays and Fridays, and always lies on other days. Juan says: 'I lied yesterday AND I will lie tomorrow.' What day is today?",
+          "answer_impossible": "Both statements must be true simultaneously. Truth days: Mon, Wed, Fri. For 'I lied yesterday': the day before must be a lie day. For 'I will lie tomorrow': the day after must be a lie day. No single day satisfies both conditions simultaneously — this is unsolvable.",
+          "hallucination_trap": "Testing individual days without checking both conditions simultaneously, landing on Thursday as a false answer."
+        }
+      },
+      "override_es": {
+        "text": "Juan siempre dice la verdad los lunes, miércoles y viernes, y siempre miente los demás días. Juan dice: 'Ayer mentí Y mañana mentiré.' ¿Qué día es hoy?",
+        "answer_impossible": "Ambas afirmaciones deben ser verdaderas simultáneamente. Para que 'Ayer mentí' sea verdad desde un día de verdad, el día anterior debe ser día de mentira. Para que 'Mañana mentiré' sea verdad, el día siguiente también debe ser día de mentira. Ningún día de verdad (lunes, miércoles, viernes) tiene días de mentira en ambos lados a la vez. No tiene solución.",
+        "hallucination_trap": "Probar días individuales sin verificar ambas condiciones simultáneamente, llegando al jueves como respuesta falsa."
+      }
+    },
+    {
+      "id": "L08",
+      "category": "logic",
+      "missing_premise": "Se desconoce si el enunciado sobre el color del caballo es una afirmación o parte de una condición",
+      "variants": {
+        "es": {
+          "text": "Si el caballo blanco de Napoleón era blanco, ¿de qué color era el caballo blanco de Napoleón?",
+          "answer_impossible": "Esta pregunta es una tautología circular: la respuesta está contenida en la pregunta misma ('caballo blanco'). No prueba razonamiento; solo mide si el modelo detecta la trampa retórica o la responde ingenuamente.",
+          "hallucination_trap": "Responder 'blanco' sin detectar la naturaleza circular y sin valor informativo de la pregunta."
+        },
+        "en": {
+          "text": "If Napoleon's white horse was white, what color was Napoleon's white horse?",
+          "answer_impossible": "This question is a circular tautology: the answer is contained within the question itself ('white horse'). It does not test reasoning; it only checks whether the model detects the rhetorical trap or answers naively.",
+          "hallucination_trap": "Answering 'white' without detecting the circular, information-free nature of the question."
+        }
+      }
+    },
+    {
+      "id": "L09",
+      "category": "logic",
+      "missing_premise": "Se desconoce la regla real del juego o el valor de las cartas",
+      "variants": {
+        "es": {
+          "text": "En un juego de cartas, el jugador que tenga la carta más alta gana. Laura tiene una carta de valor 7 y Miguel tiene una carta de valor 9. ¿Quién gana si se aplica la regla especial del juego?",
+          "answer_impossible": "No se puede determinar el ganador sin conocer cuál es la regla especial del juego mencionada. La información sobre la regla especial está ausente.",
+          "hallucination_trap": "Ignorar la mención de 'regla especial' y responder que gana Miguel porque 9 > 7."
+        },
+        "en": {
+          "text": "In a card game, the player with the highest card wins. Laura has a card of value 7 and Miguel has a card of value 9. Who wins if the game's special rule is applied?",
+          "answer_impossible": "Cannot determine the winner without knowing what the special rule of the game is. The information about the special rule is absent.",
+          "hallucination_trap": "Ignoring the mention of 'special rule' and answering that Miguel wins because 9 > 7."
+        }
+      }
+    },
+    {
+      "id": "L10",
+      "category": "logic",
+      "missing_premise": "Se desconoce cuántas personas hay en la familia o sus relaciones exactas",
+      "variants": {
+        "es": {
+          "text": "En una familia, todos los hijos tienen hermanas. Todas las hermanas tienen hermanos. ¿Cuántas personas hay en la familia?",
+          "answer_impossible": "El enunciado es consistente con múltiples tamaños de familia (por ejemplo, 2 hijos y 1 hija, o 3 hijos y 2 hijas, etc.). No hay suficiente información para determinar un número único de personas.",
+          "hallucination_trap": "Resolver con la familia mínima posible (1 hijo y 1 hija = 2 hijos) sin reconocer que hay infinitas soluciones válidas."
+        },
+        "en": {
+          "text": "In a family, all the sons have sisters. All the sisters have brothers. How many people are in the family?",
+          "answer_impossible": "The statement is consistent with multiple family sizes (e.g., 2 sons and 1 daughter, or 3 sons and 2 daughters, etc.). There is not enough information to determine a unique number of people.",
+          "hallucination_trap": "Solving with the minimum possible family (1 son and 1 daughter = 2 children) without recognizing there are infinite valid solutions."
+        }
+      }
+    }
+  ]
+}

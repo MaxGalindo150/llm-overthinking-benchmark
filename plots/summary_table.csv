@@ -1,0 +1,7 @@
+Model,Detection %,Abstain Rate,Avg Output Tokens,Total Cost USD,Cost per Correct,Is Reasoning
+gpt-o3-mini,85.0,0.0,1094,0.1972,0.0058,True
+gpt-4o,82.5,0.0,140,0.0663,0.002,False
+qwen3-thinking,82.5,0.0,1685,0.0411,0.0012,True
+claude-sonnet,80.0,0.0,285,0.1841,0.0058,False
+gemini-flash-thinking,75.0,0.0,250,0.0066,0.0002,True
+deepseek-r1,65.0,0.0,1418,0.1264,0.0049,True
