@@ -26,16 +26,16 @@ import numpy as np
 # ─── Styling ──────────────────────────────────────────────────────────────────
 
 PALETTE = {
-    "deepseek-r1":           "#EF5350",
-    "qwen3-thinking":        "#AB47BC",
-    "gpt-o3-mini":           "#42A5F5",
-    "claude-sonnet":         "#FF7043",
-    "gemini-flash-thinking": "#26A69A",
-    "gpt-4o":                "#78909C",
+    "deepseek-v4":         "#EF5350",
+    "qwen3-max-thinking":  "#AB47BC",
+    "gpt-5-mini":          "#42A5F5",
+    "claude-opus":         "#FF7043",
+    "gemini-3-flash":      "#26A69A",
+    "gpt-5":               "#78909C",
 }
 
 REASONING_MODELS = {
-    "deepseek-r1", "qwen3-thinking", "gpt-o3-mini", "gemini-flash-thinking"
+    "deepseek-v4", "qwen3-max-thinking", "gpt-5-mini", "claude-opus", "gemini-3-flash"
 }
 
 plt.rcParams.update({

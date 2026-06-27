@@ -44,12 +44,12 @@ Each question is provided in both **Spanish** and **English**.
 
 | Model | Provider | Type |
 |-------|----------|------|
-| DeepSeek-R1 | DeepSeek | Reasoning |
-| Qwen3-Thinking (235B) | OpenRouter | Reasoning |
-| GPT-o3-mini | OpenAI | Reasoning |
-| Claude Sonnet 4.6 | Anthropic | Standard |
-| Gemini 2.5 Flash Thinking | Google | Reasoning |
-| GPT-4o | OpenAI | Standard |
+| DeepSeek-V4 Pro | DeepSeek | Reasoning |
+| Qwen3-Max-Thinking | OpenRouter | Reasoning |
+| GPT-5.4-mini | OpenAI | Reasoning |
+| Claude Opus 4.8 | Anthropic | Reasoning |
+| Gemini 3 Flash | Google | Reasoning |
+| GPT-5.4 | OpenAI | Standard |
 
 ---
 
@@ -79,8 +79,8 @@ python run_experiments.py --dry-run
 ### 4. Run a subset
 
 ```bash
-# Test only GPT-4o and Claude, Spanish only
-python run_experiments.py --models gpt-4o claude-sonnet --languages es
+# Test only GPT-5 and Claude, Spanish only
+python run_experiments.py --models gpt-5 claude-opus --languages es
 ```
 
 ### 5. Run the full benchmark

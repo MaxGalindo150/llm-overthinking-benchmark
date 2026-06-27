@@ -31,46 +31,46 @@ load_dotenv()
 # ─── Model registry ───────────────────────────────────────────────────────────
 
 MODELS: dict[str, dict[str, Any]] = {
-    "deepseek-r1": {
+    "deepseek-v4": {
         "provider": "deepseek",
-        "model_id": "deepseek-reasoner",
-        "cost_per_1k_input": 0.00055,   # USD (cache miss)
-        "cost_per_1k_output": 0.00219,
+        "model_id": "deepseek-v4-pro",        # flagship, thinking mode by default
+        "cost_per_1k_input": 0.000435,        # USD (cache miss), official pricing 2026-06
+        "cost_per_1k_output": 0.000870,
         "is_reasoning": True,
     },
-    "qwen3-thinking": {
+    "qwen3-max-thinking": {
         "provider": "openrouter",
-        "model_id": "qwen/qwq-32b",
-        "cost_per_1k_input": 0.00015,
-        "cost_per_1k_output": 0.00060,
+        "model_id": "qwen/qwen3-max-thinking",
+        "cost_per_1k_input": 0.000780,
+        "cost_per_1k_output": 0.003900,
         "is_reasoning": True,
     },
-    "gpt-o3-mini": {
+    "gpt-5-mini": {
         "provider": "openai",
-        "model_id": "o3-mini",
-        "cost_per_1k_input": 0.00110,
-        "cost_per_1k_output": 0.00440,
+        "model_id": "gpt-5.4-mini",
+        "cost_per_1k_input": 0.000750,
+        "cost_per_1k_output": 0.004500,
         "is_reasoning": True,
     },
-    "claude-sonnet": {
+    "claude-opus": {
         "provider": "anthropic",
-        "model_id": "claude-sonnet-4-6",
-        "cost_per_1k_input": 0.00300,
-        "cost_per_1k_output": 0.01500,
-        "is_reasoning": False,
-    },
-    "gemini-flash-thinking": {
-        "provider": "google",
-        "model_id": "gemini-2.5-flash",
-        "cost_per_1k_input": 0.000150,   # Gemini 2.5 Flash list price
-        "cost_per_1k_output": 0.000600,
+        "model_id": "claude-opus-4-8",        # adaptive thinking
+        "cost_per_1k_input": 0.00500,
+        "cost_per_1k_output": 0.02500,
         "is_reasoning": True,
     },
-    "gpt-4o": {
+    "gemini-3-flash": {
+        "provider": "google",
+        "model_id": "gemini-3-flash-preview",  # thinking_level control
+        "cost_per_1k_input": 0.000500,
+        "cost_per_1k_output": 0.003000,
+        "is_reasoning": True,
+    },
+    "gpt-5": {
         "provider": "openai",
-        "model_id": "gpt-4o",
+        "model_id": "gpt-5.4",                 # flagship workhorse
         "cost_per_1k_input": 0.00250,
-        "cost_per_1k_output": 0.01000,
+        "cost_per_1k_output": 0.01500,
         "is_reasoning": False,
     },
 }
@@ -140,8 +140,9 @@ def call_openai(model_id: str, prompt: str, system: str) -> dict[str, Any]:
             {"role": "user", "content": prompt},
         ],
     }
-    # o3-mini uses max_completion_tokens, not max_tokens
-    if model_id.startswith("o"):
+    # Reasoning models (o-series and GPT-5.x) use max_completion_tokens and
+    # reject max_tokens; classic chat models still use max_tokens.
+    if model_id.startswith("o") or model_id.startswith("gpt-5"):
         kwargs["max_completion_tokens"] = 4096
     else:
         kwargs["max_tokens"] = 1024
