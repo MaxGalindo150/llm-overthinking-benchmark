@@ -86,6 +86,9 @@ DETECTION_KEYWORDS = {
         "no está definido", "indeterminado", "contradicción",
         "no se puede resolver", "no hay solución", "irresoluble",
         "no se puede responder", "no puedo responder",
+        # 3ª persona / reflexivas ("no puede responderse", "no puede determinarse", ...)
+        "no puede", "no está determin", "no determina",
+        "no especifica", "no se proporciona", "paradoj",
     ],
     "en": [
         "cannot", "can't", "impossible", "missing", "insufficient",
@@ -95,6 +98,7 @@ DETECTION_KEYWORDS = {
         "contradiction", "cannot be solved", "no solution", "unsolvable",
         "cannot answer", "unable to answer", "unable to determine",
         "no way to", "there is no",
+        "does not provide", "doesn't provide", "paradox",
     ],
 }
 
